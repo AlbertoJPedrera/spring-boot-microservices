@@ -1,0 +1,9 @@
+spring.application.name: config-server
+server.port: 8888
+
+# TODO: uncomment local and remote altervatively
+spring.cloud.config.server.git.default-label: master
+  # spring.cloud.config.server.git.uri: "D:/Shared/MyFiles/Netmind/git-localconfig-repo"
+spring.cloud.config.server.git.uri: "https://github.com/ricardoahumada/spring-cloud-config-repo"
+
+eureka.client.service-url.default-zone: http://localhost:8761/eureka

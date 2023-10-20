@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: accounts-service
+  sql.init.mode: always
+  devtools.restart.enabled: true
+  datasource:
+    url: "jdbc:h2:mem:accountsdb"
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+      generate-ddl: true
+      hbm2ddl.auto: create
+    defer-datasource-initialization: true
+  h2:
+    console.enabled: true
+    console.path: /h2-ui
+
+server:
+  port: 9900
+
+spring.mvc.pathmatch.matching-strategy: ANT_PATH_MATCHER
+
+springdoc:
+  #api-docs.enabled: false
+  #swagger-ui.enabled: false
+  swagger-ui.path: /accounts-documentation
+#  api-docs.path: /accounts-api-docs
+  packages-to-scan: com.netmind.accountsservice.controller
+  swagger-ui:
+    tryItOutEnabled: true
+    operationsSorter: method
+    tagsSorter: alpha
+    filter: true
+
+accounts.openapi:
+  dev-url: http://accounts-api.dev
+  prod-url: https://accounts-api.com
+
+spring.config.import: "optional:configserver:http://localhost:8888" # config server
+
+
+# property
+accounts-service.maxtoshow: 10
+
+# customers service path
+customers-service:
+  base-url: http://localhost:9200
+  path: /customers/{id}
+
+management.endpoints.web.exposure.include: "*"
+
+#debug: true
+logging:
+  path: /var/tmp/
+  file: /var/tmp/mylog.log
+  level:
+    root: INFO
+
+# disable eureka finding...going to use “Kubernetes” for “Discovery” instead
+eureka.client:
+  register-with-eureka: false
+  fetch-registry: false

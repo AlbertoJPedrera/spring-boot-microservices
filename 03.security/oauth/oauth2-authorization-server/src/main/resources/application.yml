@@ -1,0 +1,32 @@
+server:
+  port: 9000
+server.error.whitelabel.enabled: false
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+
+#spring:
+#  security:
+#    oauth2:
+#      authorizationserver:
+#        client:
+#          oidc-client:
+#            registration:
+#              client-id: "client1"
+#              client-secret: "{noop}myClientSecretValue"
+#              client-authentication-methods:
+#                - "client_secret_basic"
+#              authorization-grant-types:
+#                - "authorization_code"
+#                - "refresh_token"
+#              redirect-uris:
+#                - "http://127.0.0.1:8080/login/oauth2/code/products-client-oidc"
+#              post-logout-redirect-uris:
+#                - "http://127.0.0.1:8080/authorized"
+#              scopes:
+#                - "openid"
+#                - "SCOPE_products.read"
+#            require-authorization-consent: true

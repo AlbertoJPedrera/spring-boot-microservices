@@ -1,0 +1,19 @@
+spring.application.name: naming-server
+server.port: 8761
+
+# TODO: unccomment for config-server
+# cloud:
+#     config:
+#       discovery:
+#         enabled: true
+#         service-id: config-server
+#       enabled: true
+
+# spring.config:
+#   config: false
+#   import: "optional:configserver:http://localhost:8888" # config server
+
+# TODO: unccomment for not auto register
+eureka.client.register-with-eureka: false
+eureka.client.fetch-registry: false
+

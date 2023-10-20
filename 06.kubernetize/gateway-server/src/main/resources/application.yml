@@ -1,0 +1,54 @@
+server.port: 8765
+
+spring:
+  application.name: gateway-server
+  cloud:
+    gateway:
+      discovery.locator.enabled: true
+      routes:
+        - id: ProductsService
+          uri: "http://products-service:9090/"
+          predicates:
+            - Path=/products/**
+        - id: OrdersService
+          uri: "http://orders-service:9100/"
+          predicates:
+            - Path=/orders/**
+        - id: CustomersService
+          uri: "http://customers-service:9200/"
+          predicates:
+            - Path=/customers/**
+
+#springdoc:
+#  enable-native-support: true
+#  api-docs:
+#    enabled: true
+#  swagger-ui:
+#    enabled: true
+#    path: /swagger-ui.html
+#    config-url: /v3/api-docs/swagger-config
+#    urls:
+#      - url: /v3/api-docs
+#        name: API Gateway Service
+#        primaryName: API Gateway Service
+#      - url: /products-service/v3/api-docs
+#        name: Product Service
+#        primaryName: Product Service
+#      - url: /orders-service/v3/api-docs
+#        name: Order Service
+#        primaryName: Order Service
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+# disable eureka finding...going to use “Kubernetes” for “Discovery” instead
+eureka.client:
+  service-url.default-zone: http://localhost:8761/eureka
+  register-with-eureka: false
+  fetch-registry: false

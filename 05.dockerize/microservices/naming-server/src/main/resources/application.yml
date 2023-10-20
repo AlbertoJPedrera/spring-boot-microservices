@@ -1,0 +1,17 @@
+spring.application.name: naming-server
+server.port: 8761
+
+cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      enabled: true
+
+spring.config:
+  config: false
+  import: "optional:configserver:"
+
+eureka.client:
+  register-with-eureka: true
+  fetch-registry: false

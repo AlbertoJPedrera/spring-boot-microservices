@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: accounts-service
+  profiles.active: testing
+  sql.init.mode: always
+  devtools.restart.enabled: true
+  cloud.config.enabled: false
+
+server:
+  port: 9900
+
+
+# property
+accounts-service.maxtoshow: 10
+
+# customers service path
+customers-service.path: /customers/{id}
+
+management.endpoints.web.exposure.include: "*"
+
+#debug: true
+logging:
+  path: /var/tmp/
+  file: /var/tmp/mylog.log
+  level:
+    root: INFO
+
+
+eureka.client:
+  register-with-eureka: false
+  fetch-registry: false

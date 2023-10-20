@@ -1,0 +1,15 @@
+resources:
+#  - config-server/config-server.rs.yaml
+#  - config-server/config-server.svc.yaml
+#  - products-service/products-service.rs.yaml
+#  - products-service/products-service.svc.yaml
+#  - orders-service/orders-service.rs.yaml
+#  - orders-service/orders-service.svc.yaml
+  - users-management-service/customers-service.rs.yaml
+  - users-management-service/customers-service.svc.yaml
+  - accounts-service/accounts-config.yaml
+  - accounts-service/accounts-service.rs.yaml
+  - accounts-service/accounts-service.svc.yaml
+#  - gateway-server/gateway-server.rs.yaml
+#  - gateway-server/gateway-server.svc.yaml
+  

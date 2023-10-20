@@ -1,0 +1,51 @@
+spring:
+  sql.init.mode: always
+  application:
+    name: orders-service
+  datasource:
+    url: "jdbc:h2:mem:ordersdb"
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+      generate-ddl: true
+    defer-datasource-initialization: true
+  h2:
+    console.enabled: true
+    console.path: /h2-ui
+
+server:
+  port: 9100
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: false
+
+spring.mvc.pathmatch.matching-strategy: ANT_PATH_MATCHER
+
+spring.config.import: "optional:configserver:http://config-server:8888" # config server
+spring.profiles.active: dev #for activate profile
+
+management.endpoints.web.exposure.include: "*"
+
+orders-service:
+  min: 80
+  max: 100
+
+products-service:
+  base-url: http://localhost:9090
+  path: /products/{id}
+
+# disable eureka finding...going to use “Kubernetes” for “Discovery” instead
+eureka.client:
+  register-with-eureka: false
+  fetch-registry: false
+
+
+security.user.name: ${SECRETS_DEMO_USER:demo}
+security.user.password: ${SECRETS_DEMO_USER_PASSWD:demo}

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: orders-config
+data:
+  dev-config.json:
+    '{      
+      "orders-service.min": 2,
+      "orders-service.max": 5
+     }'
